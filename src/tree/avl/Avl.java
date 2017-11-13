@@ -37,6 +37,14 @@ public class Avl {
 		}
 	}
 	
+	public void del(int value) {
+		del(raiz, value);
+	}
+	private void del(No node, int value) {
+		
+	}
+	
+	
 	private void verificarBalanceamento(No node) {
 		node.setBalanceamento(altura(node.getDireita()) - altura(node.getEsquerda()));
 		int balanceamento = node.getBalanceamento();

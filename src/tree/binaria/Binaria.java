@@ -36,6 +36,42 @@ public class Binaria {
 		}
 	}
 	
+	public void  remover(int value) {
+		remover(raiz, value);
+	}
+	
+	private No remover(No node, int value) {
+		if(node == null) 
+			return null;
+		
+		else if(node.getValor() > value)
+			node.setEsquerda(remover(node.getEsquerda(), value));
+		
+		else if(node.getValor() < value)
+			node.setDireita(remover(node.getDireita(), value));
+		
+		else {
+			if(node.getDireita() == null)
+				return node.getEsquerda();
+			else if(node.getEsquerda() == null)
+				return node.getDireita();
+			else {
+				node.setValor(menorValor(node.getDireita()));
+				
+				node.setDireita(remover(node.getDireita(), value));
+			}
+		}
+		
+		return node;
+	}
+
+	private int menorValor(No node) {
+		if(node.getEsquerda() == null)
+			return node.getValor();
+		else
+			return menorValor(node);
+	}
+
 	public void listValorArvorePreOrdem() {
 		listValorArvorePreOrdem(raiz);
 	}
