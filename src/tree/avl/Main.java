@@ -16,6 +16,8 @@ public class Main {
 		System.out.println("Tecle 2 para listar em Pré Ordem");
 		System.out.println("Tecle 3 para listar em Em  Ordem");
 		System.out.println("Tecle 4 para listar em Pós Ordem");
+		System.out.println("Tecle 5 para Remover");
+		
 		
 		do {
 			System.out.print("$: ");
@@ -27,10 +29,22 @@ public class Main {
 				case 2: System.out.println("\nPré Ordem"); avl.listValorArvorePreOrdem(); ; break;
 				case 3: System.out.println("\nEm  Ordem"); avl.listValorArvoreEmOrdem(); break;
 				case 4: System.out.println("\nPós Ordem"); avl.listValorArvorePosOrdem(); break;
+				case 5: removerArvoreAvl(in, avl); break;
 				default: System.out.println("Comando não especificado \n"); break;
 			}
 
 		}while(command != 0);
+	}
+
+
+	private static void removerArvoreAvl(Scanner in, Avl avl) {
+		System.out.print("\nValor: ");
+
+		avl.remover(in.nextInt());
+		
+		System.out.print("\nRemover outro valor? (s/n): ");
+		if(in.next().toUpperCase().equals("S"))
+			removerArvoreAvl(in, avl);
 	}
 
 

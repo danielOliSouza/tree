@@ -37,13 +37,81 @@ public class Avl {
 		}
 	}
 	
-	public void del(int value) {
-		del(raiz, value);
+	public void remover(int value) {
+		remover(raiz, value);
 	}
-	private void del(No node, int value) {
-		
+	private void remover(No node, int value) {
+		if (node == null) {
+			return;
+		} 
+		else {
+			if (node.getValor() > value) {
+				remover(node.getEsquerda(), value);
+
+			} else if (node.getValor() < value) {
+				remover(node.getDireita(), value);
+
+			} else if (node.getValor() == value) {
+				removerNoEncontrado(node);
+			}
+		}
 	}
 	
+	private void removerNoEncontrado(No node) {
+		No del, p;
+		
+		if(node.getEsquerda() == null && node.getDireita() == null) {
+			if(node.getPai() == null) {
+				raiz = null;
+				node = null;
+				return;
+			}
+			
+			del = node;
+		}
+		else {
+			del = sucessor(node);
+			node.setValor(del.getValor());
+		}
+		
+		if(del.getEsquerda() != null)
+			p = del.getEsquerda();
+		else
+			p = del.getDireita();
+		
+		if(p != null)
+			p.setPai(del.getPai());
+		
+		if(del.getPai() == null)
+			raiz = p;
+		else {
+			if(del == del.getPai().getEsquerda())
+				del.getPai().setEsquerda(p);
+			else
+				del.getPai().setDireita(p);
+			
+			verificarBalanceamento(del.getPai());
+		}
+		
+		del = null;
+	}
+
+	public No sucessor(No q) {
+		if (q.getDireita() != null) {
+			No r = q.getDireita();
+			while (r.getEsquerda() != null) {
+				r = r.getEsquerda();
+			}
+			return r;
+		} else {
+			No p = q.getPai();
+			while (p != null && q == p.getDireita()) {
+				q = p;
+				p = q.getPai();
+			}
+			return p;
+		}
+	}
 	
 	private void verificarBalanceamento(No node) {
 		node.setBalanceamento(altura(node.getDireita()) - altura(node.getEsquerda()));
