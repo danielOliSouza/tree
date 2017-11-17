@@ -37,7 +37,7 @@ public class Binaria {
 	}
 	
 	public void  remover(int value) {
-		remover(raiz, value);
+		raiz = remover(raiz, value);
 	}
 	
 	private No remover(No node, int value) {
@@ -58,7 +58,7 @@ public class Binaria {
 			else {
 				node.setValor(menorValor(node.getDireita()));
 				
-				node.setDireita(remover(node.getDireita(), value));
+				node.setDireita(remover(node.getDireita(), node.getValor()));
 			}
 		}
 		
