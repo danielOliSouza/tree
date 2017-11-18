@@ -1,20 +1,19 @@
 package tree.avl;
 
 public class No {
-	private Integer valor = null;
-	private No esquerda = null;
-	private No direita = null;
-	private int balanceamento;
-	private No pai = null;
+	private int valor;
+	private No esquerda;
+	private No direita;
+	private int altura = 0;
 	
-	public No(int valor) {
-		this.valor = valor;
+	
+	public No(int value) {
+		valor = value;
 	}
-	
-	public Integer getValor() {
+	public int getValor() {
 		return valor;
 	}
-	public void setValor(Integer valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 	public No getEsquerda() {
@@ -29,17 +28,10 @@ public class No {
 	public void setDireita(No direita) {
 		this.direita = direita;
 	}
-	public int getBalanceamento() {
-		return balanceamento;
+	public int getAltura() {
+		return altura;
 	}
-	public void setBalanceamento(int balanceamento) {
-		this.balanceamento = balanceamento;
+	public void setAltura(int altura) {
+		this.altura = altura;
 	}
-	public void setPai(No pai) {
-		this.pai = pai;
-	}
-	public No getPai() {
-		return pai;
-	}
-	
 }
