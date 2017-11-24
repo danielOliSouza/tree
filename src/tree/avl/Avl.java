@@ -52,7 +52,7 @@ public class Avl {
         //Rebalancear a arvore
         int balance = getBalance(node);
         
-        //Rotação Simples a Esquerda
+        //Rotação Simples a Direita
         if (balance > 1 && getBalance(node.getEsquerda()) >= 0)
             return rightRotate(node);
         
@@ -62,7 +62,7 @@ public class Avl {
             return rightRotate(node);
         }
         
-        // Rotação Simples a Direita
+        // Rotação Simples a Esquerda
         if (balance < -1 && getBalance(node.getDireita()) <= 0)
             return leftRotate(node);
         
