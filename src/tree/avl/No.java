@@ -4,11 +4,12 @@ public class No {
 	private int valor;
 	private No esquerda;
 	private No direita;
-	private int altura = 0;
+	private int altura;
 	
 	
 	public No(int value) {
 		valor = value;
+		altura = 1;
 	}
 	public int getValor() {
 		return valor;
